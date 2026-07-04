@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-script: "Pinyon Script", "Great Vibes", "Mrs Saint Delafield", cursive;
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  --color-brand-brown: #8b6e4e; /* Warm premium accent brown */
+  --color-brand-light-beige: #faf7f2; /* Soft background */
+  --color-brand-dark-brown: #2d251d;
+  --color-brand-dark: #121212;
+}
+
+@layer base {
+  html, body, #root {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    font-family: var(--font-sans);
+    background-color: var(--color-brand-dark);
+    color: #ffffff;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+}
+
+/* Custom animations and scroll effects */
+.handwritten-of {
+  font-family: var(--font-script);
+  line-height: 0.3;
+}
+
+/* Smooth GSAP and transition properties */
+.parallax-bg {
+  will-change: transform;
+}
+
+/* Hide scrollbars for cinematic view if needed, but standard is fine */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #121212;
+}
+::-webkit-scrollbar-thumb {
+  background: #2d251d;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #8b6e4e;
+}
+
+/* Design Philosophy Focus Cards */
+.design-card-transition {
+  transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), 
+              opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), 
+              border-color 1.2s cubic-bezier(0.25, 1, 0.5, 1),
+              box-shadow 1.2s cubic-bezier(0.25, 1, 0.5, 1),
+              z-index 0.1s ease;
+  will-change: transform, opacity;
+}
+
+/* Matching image zoom transition to prevent lag and jerks */
+.image-zoom-transition {
+  transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+}
+
