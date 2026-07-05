@@ -217,7 +217,7 @@ export default function Hero({ onWelcomeComplete }) {
       {/* Headlines and Content Wrapper */}
       <div
         ref={contentRef}
-        className="relative z-20 flex flex-col items-center justify-center text-center px-4 w-full max-w-6xl translate-y-24 sm:translate-y-0"
+        className="relative z-20 flex flex-col items-center justify-center text-center px-4 w-full max-w-6xl max-md:translate-y-24"
       >
         <h1 className="font-serif text-[#F5F0EA] text-[10vw] xs:text-[9vw] sm:text-[6.5vw] md:text-[6vw] lg:text-[5.5rem] xl:text-[6.5rem] leading-[1.1] tracking-wide text-center w-full select-none flex flex-col items-center">
           <span className="line-1 block">A Sense</span>
