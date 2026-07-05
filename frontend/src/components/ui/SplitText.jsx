@@ -63,7 +63,7 @@ export default function SplitText({
             <span
               key={wordIdx}
               className="split-word inline-block"
-              style={{ marginRight: '0.25em', willChange: 'transform, opacity' }}
+              style={{ marginRight: '0.25em' }}
             >
               {word}
             </span>
@@ -76,7 +76,6 @@ export default function SplitText({
               <span
                 key={charIdx}
                 className="split-char inline-block"
-                style={{ willChange: 'transform, opacity' }}
               >
                 {char}
               </span>

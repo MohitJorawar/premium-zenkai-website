@@ -91,7 +91,7 @@ export default function App() {
       ignoreMobileResize: true,
       limitCallbacks: true
     })
-    ScrollTrigger.normalizeScroll({ allowNestedScroll: true })
+    // ScrollTrigger.normalizeScroll({ allowNestedScroll: true })
 
     let ctx = gsap.context(() => {
       const tl = gsap.timeline({
