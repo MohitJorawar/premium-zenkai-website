@@ -140,7 +140,7 @@ export default function Footer() {
         {/* Footer Bottom Strip */}
         <div className="flex flex-col items-center justify-center pt-4 text-center">
           <p className="text-[11px] text-zinc-600 font-sans">
-            Designed by <a href="#" className="hover:text-zinc-400 underline transition-colors">DhaniDev</a>. Powered by <a href="#" className="hover:text-zinc-400 underline transition-colors">Webflow</a>.
+            Designed and Developed by <a href="https://mohitjorawar.github.io/Mohit-portfolio/" target="_blank" rel="noopener noreferrer" className="hover:text-zinc-400 underline transition-colors">Mohit Jorawar</a>
           </p>
         </div>
 
