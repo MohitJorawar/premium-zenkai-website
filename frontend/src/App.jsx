@@ -20,6 +20,9 @@ export default function App() {
   const [sectionInView, setSectionInView] = useState(false)
   const [staggerActive, setStaggerActive] = useState(true)
 
+  // Welcome/Intro Animation State
+  const [isWelcomeComplete, setIsWelcomeComplete] = useState(false)
+
   // Shopping Cart States
   const [cart, setCart] = useState([])
   const [isCartOpen, setIsCartOpen] = useState(false)
@@ -161,10 +164,11 @@ export default function App() {
       <Navbar 
         cartCount={cart.reduce((acc, item) => acc + item.quantity, 0)} 
         onCartClick={() => setIsCartOpen(true)} 
+        isWelcomeComplete={isWelcomeComplete}
       />
 
       {/* Hero Showcase Section */}
-      <Hero />
+      <Hero onWelcomeComplete={() => setIsWelcomeComplete(true)} />
 
       {/* About Us Section */}
       <About />

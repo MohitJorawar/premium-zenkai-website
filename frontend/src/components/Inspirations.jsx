@@ -205,11 +205,11 @@ export default function Inspirations() {
       id="inspirations"
       className="relative w-full overflow-hidden bg-[#FAF7F2] py-24 md:py-28 flex flex-col justify-center select-none z-20 border-t border-zinc-200"
     >
-      <div className="max-w-[1440px] w-full mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-12 items-center px-6 md:px-12 lg:px-16 gap-12 lg:gap-16">
+      <div className="max-w-[1440px] w-full mx-auto relative z-10 grid grid-cols-3 lg:grid-cols-12 items-center px-4 md:px-12 lg:px-16 gap-3 xs:gap-4 lg:gap-16">
         
         {/* Left Column: Vertical Image (Inspiration Left) */}
-        <div ref={leftImageWrapperRef} className="lg:col-span-4 w-full relative">
-          <div className="aspect-[4/5] w-full bg-zinc-100 overflow-hidden rounded-xs shadow-lg relative">
+        <div ref={leftImageWrapperRef} className="col-span-1 lg:col-span-4 w-full relative">
+          <div className="aspect-[2/3] w-full bg-zinc-100 overflow-hidden rounded-xs shadow-lg relative">
             <img
               ref={leftImageRef}
               src={activeSlide.leftImage}
@@ -221,32 +221,32 @@ export default function Inspirations() {
         </div>
 
         {/* Middle Column: Text Details */}
-        <div className="lg:col-span-4 flex flex-col justify-center text-left py-4 lg:py-0">
-          <span className="inspiration-animate-text text-[11px] uppercase tracking-[0.2em] text-[#1A1A1A]/60 font-sans font-semibold block mb-4 opacity-0">
+        <div className="col-span-1 lg:col-span-4 flex flex-col justify-center text-left py-0">
+          <span className="inspiration-animate-text text-[8px] xs:text-[11px] uppercase tracking-[0.15em] xs:tracking-[0.2em] text-[#1A1A1A]/60 font-sans font-semibold block mb-1 xs:mb-4 opacity-0">
             Inspirations
           </span>
-          <h2 className="inspiration-animate-text font-serif text-4xl sm:text-5xl lg:text-[54px] font-normal text-[#1A1A1A] leading-tight select-none opacity-0">
+          <h2 className="inspiration-animate-text font-serif text-[13px] xs:text-base sm:text-3xl md:text-4xl lg:text-[54px] font-normal text-[#1A1A1A] leading-tight select-none opacity-0">
             {activeSlide.title}
           </h2>
-          <p className="inspiration-animate-text text-zinc-600 font-sans font-light text-sm md:text-base leading-relaxed mt-6 max-w-sm opacity-0">
+          <p className="inspiration-animate-text text-zinc-600 font-sans font-light text-[9px] xs:text-[11px] sm:text-sm md:text-base leading-relaxed mt-2 xs:mt-4 sm:mt-6 max-w-sm opacity-0">
             {activeSlide.description}
           </p>
         </div>
 
         {/* Right Column: Counter, Right Image, Mood and Buttons */}
-        <div className="lg:col-span-4 flex flex-col justify-between h-full relative">
+        <div className="col-span-1 lg:col-span-4 flex flex-col justify-between relative">
           
           {/* Top Right Counter */}
-          <div className="flex justify-end mb-6 lg:mb-12">
-            <span className="inspiration-animate-text font-serif text-3xl font-light text-[#1A1A1A] select-none opacity-0">
+          <div className="flex justify-end mb-2 xs:mb-6 lg:mb-12">
+            <span className="inspiration-animate-text font-serif text-sm xs:text-xl lg:text-3xl font-light text-[#1A1A1A] select-none opacity-0">
               <span className="italic font-normal">{activeSlide.counter}</span>
-              <span className="text-zinc-400 text-xl font-light ml-0.5">/05</span>
+              <span className="text-zinc-400 text-xs xs:text-base lg:text-xl font-light ml-0.5">/05</span>
             </span>
           </div>
 
           {/* Right/Square Image */}
-          <div ref={rightImageWrapperRef} className="w-full relative mb-12">
-            <div className="aspect-square w-full bg-zinc-100 overflow-hidden rounded-xs shadow-md relative">
+          <div ref={rightImageWrapperRef} className="w-full relative mb-3 xs:mb-6 lg:mb-12">
+            <div className="aspect-[4/5] w-full bg-zinc-100 overflow-hidden rounded-xs shadow-md relative">
               <img
                 ref={rightImageRef}
                 src={activeSlide.rightImage}
@@ -258,29 +258,29 @@ export default function Inspirations() {
           </div>
 
           {/* Mood Caption & Navigation Buttons */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mt-4">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-2 xs:gap-4 lg:gap-6 mt-1 xs:mt-4">
             
-            <p className="inspiration-animate-text text-xs md:text-[13px] leading-relaxed text-zinc-500 max-w-[280px] opacity-0">
+            <p className="inspiration-animate-text text-[8px] xs:text-[11px] lg:text-[13px] leading-tight xs:leading-relaxed text-zinc-500 max-w-[280px] opacity-0">
               <span className="font-bold italic text-zinc-700">The Mood:</span> {activeSlide.mood}
             </p>
 
             {/* Circular Navigation Buttons */}
-            <div className="flex items-center gap-4 self-end md:self-auto">
+            <div className="flex items-center gap-1.5 xs:gap-3 sm:gap-4 self-end md:self-auto">
               <button
                 onClick={prevSlide}
-                className="w-14 h-14 rounded-full border border-zinc-300 bg-white/70 hover:bg-[#1A1A1A] hover:border-[#1A1A1A] flex items-center justify-center text-zinc-700 hover:text-white transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer"
+                className="w-7 h-7 xs:w-10 xs:h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-full border border-zinc-300 bg-white/70 hover:bg-[#1A1A1A] hover:border-[#1A1A1A] flex items-center justify-center text-zinc-700 hover:text-white transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer"
                 aria-label="Previous inspiration"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.8" stroke="currentColor" className="w-5 h-5">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.8" stroke="currentColor" className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
                 </svg>
               </button>
               <button
                 onClick={nextSlide}
-                className="w-14 h-14 rounded-full border border-zinc-300 bg-white/70 hover:bg-[#1A1A1A] hover:border-[#1A1A1A] flex items-center justify-center text-zinc-700 hover:text-white transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer"
+                className="w-7 h-7 xs:w-10 xs:h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-full border border-zinc-300 bg-white/70 hover:bg-[#1A1A1A] hover:border-[#1A1A1A] flex items-center justify-center text-zinc-700 hover:text-white transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer"
                 aria-label="Next inspiration"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.8" stroke="currentColor" className="w-5 h-5">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.8" stroke="currentColor" className="w-3 h-3 xs:w-4 xs:h-4 sm:w-5 sm:h-5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
                 </svg>
               </button>

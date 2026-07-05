@@ -156,15 +156,15 @@ export default function WhyChooseUs() {
         </div>
 
         {/* Right Column: Card Grid (Unified for both mobile and desktop) */}
-        <div className="lg:col-span-8 col-span-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 w-full max-w-2xl lg:max-w-none mx-auto relative z-20">
+        <div className="lg:col-span-8 col-span-1 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 xs:gap-4 lg:gap-6 w-full max-w-2xl lg:max-w-none mx-auto relative z-20">
           {cardsData.map((card) => (
             <div key={card.id} className={`why-us-card-reveal-wrapper opacity-0 ${card.gridClass || ''}`}>
-              <div className="group bg-white p-5 lg:p-6 flex flex-col justify-between shadow-lg hover:shadow-xl transition-all duration-300 min-h-[250px] sm:min-h-[270px] lg:min-h-[250px] xl:min-h-[290px] 2xl:min-h-[320px]">
+              <div className="group bg-white p-3.5 xs:p-5 lg:p-6 flex flex-col justify-between shadow-lg hover:shadow-xl transition-all duration-300 min-h-[230px] xs:min-h-[250px] sm:min-h-[270px] lg:min-h-[250px] xl:min-h-[290px] 2xl:min-h-[320px]">
                 <div className="flex justify-between items-start w-full">
-                  <span className="font-serif text-[15px] sm:text-[16px] xl:text-[18px] tracking-widest text-zinc-400 mt-1">
+                  <span className="font-serif text-[13px] xs:text-[15px] sm:text-[16px] xl:text-[18px] tracking-widest text-zinc-400 mt-0.5">
                     {card.num}
                   </span>
-                  <div className="w-[95px] sm:w-[105px] lg:w-[95px] xl:w-[115px] 2xl:w-[130px] aspect-[3/4] overflow-hidden bg-zinc-100 relative shadow-sm">
+                  <div className="w-[90px] xs:w-[110px] sm:w-[105px] lg:w-[95px] xl:w-[115px] 2xl:w-[130px] aspect-[3/4] overflow-hidden bg-zinc-100 relative shadow-sm">
                     <img
                       src={card.image}
                       alt={card.title}
@@ -174,11 +174,11 @@ export default function WhyChooseUs() {
                   </div>
                 </div>
 
-                <div className="flex flex-col text-left mt-4">
-                  <h3 className="font-serif text-lg sm:text-xl xl:text-2xl font-normal text-[#121212] tracking-tight mb-2 mt-2 leading-tight">
+                <div className="flex flex-col text-left mt-3 xs:mt-4">
+                  <h3 className="font-serif text-base xs:text-lg sm:text-xl xl:text-2xl font-normal text-[#121212] tracking-tight mb-1 mt-1 leading-tight">
                     {card.title}
                   </h3>
-                  <p className="font-sans text-[12px] sm:text-[13px] xl:text-[14px] leading-relaxed text-zinc-600 font-light">
+                  <p className="font-sans text-[10px] xs:text-[12px] sm:text-[13px] xl:text-[14px] leading-relaxed text-zinc-600 font-light">
                     {card.desc}
                   </p>
                 </div>

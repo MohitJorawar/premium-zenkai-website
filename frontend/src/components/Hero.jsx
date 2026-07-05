@@ -6,7 +6,7 @@ import { CustomEase } from 'gsap/CustomEase'
 // Register GSAP Plugins
 gsap.registerPlugin(ScrollTrigger, CustomEase)
 
-export default function Hero() {
+export default function Hero({ onWelcomeComplete }) {
   const heroRef = useRef(null)
   const contentRef = useRef(null)
 
@@ -34,6 +34,8 @@ export default function Hero() {
     gsap.set(".video-wrapper", { xPercent: 105, opacity: 0 })
     gsap.set(".scroll-knob", { opacity: 0, scale: 0 })
     gsap.set(".scroll-line", { scaleY: 0 })
+    gsap.set(".mobile-subtext-line", { scaleX: 0 })
+    gsap.set(".mobile-subtext-text p", { yPercent: 105, opacity: 0 })
 
     let ctx = gsap.context(() => {
       // Create custom eases
@@ -95,10 +97,21 @@ export default function Hero() {
         duration: 0.6,
         ease: "power2.out"
       }, 2.9)
+      tl.to(".mobile-subtext-line", {
+        scaleX: 1,
+        duration: 0.6,
+        ease: "power2.out"
+      }, 2.9)
 
       // Symmetrical side reveals (Starts at 3.5s, duration 0.6s)
       tl.to(".subtext-text p", {
         xPercent: 0,
+        opacity: 1,
+        duration: 0.6,
+        ease: "power2.out"
+      }, 3.5)
+      tl.to(".mobile-subtext-text p", {
+        yPercent: 0,
         opacity: 1,
         duration: 0.6,
         ease: "power2.out"
@@ -152,6 +165,13 @@ export default function Hero() {
         })
       }, 4.8)
 
+      // Trigger the welcome complete callback
+      tl.add(() => {
+        if (onWelcomeComplete) {
+          onWelcomeComplete()
+        }
+      }, 5.0)
+
       // SCROLL-LINKED PARALLAX TIMELINE
       const scrollTl = gsap.timeline({
         scrollTrigger: {
@@ -197,15 +217,25 @@ export default function Hero() {
       {/* Headlines and Content Wrapper */}
       <div
         ref={contentRef}
-        className="relative z-20 flex flex-col items-center justify-center text-center px-4 w-full max-w-6xl"
+        className="relative z-20 flex flex-col items-center justify-center text-center px-4 w-full max-w-6xl translate-y-24 sm:translate-y-0"
       >
-        <h1 className="font-serif text-[#F5F0EA] text-[7vw] sm:text-[6.5vw] md:text-[6vw] lg:text-[5.5rem] xl:text-[6.5rem] leading-[1.1] tracking-wide text-center w-full select-none flex flex-col items-center">
-          <span className="line-1 block">A New Sense</span>
-          <span className="line-2 block mt-2 whitespace-nowrap">
+        <h1 className="font-serif text-[#F5F0EA] text-[10vw] xs:text-[9vw] sm:text-[6.5vw] md:text-[6vw] lg:text-[5.5rem] xl:text-[6.5rem] leading-[1.1] tracking-wide text-center w-full select-none flex flex-col items-center">
+          <span className="line-1 block">A Sense</span>
+          <span className="line-2 block mt-2 xs:whitespace-nowrap">
             <span className="script-of inline-block font-serif italic text-[0.65em] text-[#a87f5a] mr-4 select-none">of</span>
-            <span className="line-2-text inline-block">Inner Calm</span>
+            <span className="line-2-text inline-block">Inner Change</span>
           </span>
         </h1>
+
+        {/* Mobile subtext paragraph (only on mobile) */}
+        <div className="mobile-subtext-block md:hidden mt-6 max-w-[280px] text-center mx-auto relative px-4">
+          <div className="mobile-subtext-line absolute left-1/2 -translate-x-1/2 top-0 w-[40px] h-[1px] bg-[#F5F0EA]/50 origin-center" />
+          <div className="mobile-subtext-text overflow-hidden mt-4">
+            <p className="text-[14px] font-sans font-light leading-relaxed tracking-wider text-[#F5F0EA]/90">
+              Elevate your surroundings with serene layouts built for peaceful living.
+            </p>
+          </div>
+        </div>
       </div>
 
       {/* Scroll Indicator (Polo Stick) */}
@@ -218,8 +248,8 @@ export default function Hero() {
         <div className="scroll-line w-[1px] h-[180px] bg-white/70 origin-top mt-0" />
       </div>
 
-      {/* Bottom Left description text with vertical accent border */}
-      <div className="subtext-block absolute bottom-12 left-6 md:left-12 lg:left-16 z-20 max-w-[300px] md:max-w-[360px] text-left pl-4">
+      {/* Bottom Left description text with vertical accent border (desktop only) */}
+      <div className="subtext-block hidden md:block absolute bottom-12 left-6 md:left-12 lg:left-16 z-20 max-w-[300px] md:max-w-[360px] text-left pl-4">
         {/* Growing vertical line on the left */}
         <div className="subtext-line absolute left-0 top-0.5 bottom-0.5 w-[1.5px] bg-[#F5F0EA]/50 origin-top" />
         
@@ -232,7 +262,7 @@ export default function Hero() {
       </div>
 
       {/* Bottom Right luxury video card with vertical accent border */}
-      <div className="video-block absolute bottom-12 right-6 md:right-12 lg:right-16 z-20 w-[160px] sm:w-[200px] md:w-[240px] pr-4">
+      <div className="video-block absolute bottom-12 right-6 md:right-12 lg:right-16 z-20 w-[120px] xs:w-[150px] sm:w-[200px] md:w-[240px] pr-4">
         {/* Growing vertical line on the right */}
         <div className="video-line absolute right-0 top-0.5 bottom-0.5 w-[1.5px] bg-[#F5F0EA]/50 origin-top" />
         

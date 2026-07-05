@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Search, ShoppingCart, ChevronDown, Menu, X } from 'lucide-react'
 
-export default function Navbar({ cartCount, onCartClick }) {
+export default function Navbar({ cartCount, onCartClick, isWelcomeComplete }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [activeTab, setActiveTab] = useState('Home')
   const [scrolled, setScrolled] = useState(false)
@@ -11,6 +11,7 @@ export default function Navbar({ cartCount, onCartClick }) {
     const handleScroll = () => {
       if (window.scrollY > 20) {
         setScrolled(true)
+        setMobileMenuOpen(false)
       } else {
         setScrolled(false)
       }
@@ -18,6 +19,14 @@ export default function Navbar({ cartCount, onCartClick }) {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  useEffect(() => {
+    if (isWelcomeComplete) {
+      if (window.innerWidth < 768) {
+        setMobileMenuOpen(true)
+      }
+    }
+  }, [isWelcomeComplete])
 
   const navItems = [
     { name: 'Home', hasDropdown: false },
@@ -55,13 +64,13 @@ export default function Navbar({ cartCount, onCartClick }) {
         </div>
 
         {/* Desktop Navigation Menu */}
-        <nav className="hidden md:flex items-center space-x-9 text-[13px] font-medium tracking-[0.2em] py-2 uppercase">
+        <nav className="hidden md:flex items-center space-x-9 text-[15px] font-light tracking-[0.15em] py-2 uppercase font-serif">
           {navItems.map((item) => (
             <div key={item.name} className="relative group flex items-center cursor-pointer">
               <a
                 href="#"
                 onClick={() => setActiveTab(item.name)}
-                className={`transition-colors duration-300 flex items-center gap-1.5 font-sans ${
+                className={`transition-colors duration-300 flex items-center gap-1.5 ${
                   activeTab === item.name 
                     ? 'text-[#B87333]' 
                     : 'text-[#F5F0EA]/80 hover:text-[#B87333]'
@@ -133,7 +142,7 @@ export default function Navbar({ cartCount, onCartClick }) {
             transition={{ duration: 0.3, ease: 'easeInOut' }}
             className="md:hidden bg-[#121212]/95 backdrop-blur-md border-b border-white/10 overflow-hidden absolute w-full left-0 z-40"
           >
-            <div className="px-6 py-6 flex flex-col space-y-4 text-[#F5F0EA]/90 text-sm font-medium tracking-widest uppercase">
+            <div className="px-6 py-6 flex flex-col space-y-4 text-[#F5F0EA]/90 text-[16px] font-light tracking-[0.15em] uppercase font-serif">
               {navItems.map((item) => (
                 <div key={item.name} className="border-b border-white/5 pb-3">
                   <div className="flex justify-between items-center">

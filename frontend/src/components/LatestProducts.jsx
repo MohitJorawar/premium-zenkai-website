@@ -113,7 +113,7 @@ export default function LatestProducts({ onAddToCart }) {
         </div>
 
         {/* Product Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-16 select-none">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-x-3 xs:gap-x-4 sm:gap-x-6 gap-y-12 sm:gap-y-16 select-none">
           {latestProducts.map((product) => (
             <div
               key={product.id}
@@ -142,7 +142,7 @@ export default function LatestProducts({ onAddToCart }) {
                       e.stopPropagation()
                       setSelectedProduct(product)
                     }}
-                    className="bg-[#FAF7F2]/95 text-[#1A1A1A] border border-[#1A1A1A]/10 px-5 py-2.5 rounded-xs uppercase tracking-widest text-[11px] font-semibold transition-all duration-300 hover:bg-[#1A1A1A] hover:text-[#FAF7F2] hover:border-[#1A1A1A] transform translate-y-4 group-hover:translate-y-0 cursor-pointer shadow-sm"
+                    className="bg-[#FAF7F2]/95 text-[#1A1A1A] border border-[#1A1A1A]/10 px-3 xs:px-5 py-2.5 rounded-xs uppercase tracking-widest text-[9px] xs:text-[11px] font-semibold transition-all duration-300 hover:bg-[#1A1A1A] hover:text-[#FAF7F2] hover:border-[#1A1A1A] transform translate-y-4 group-hover:translate-y-0 cursor-pointer shadow-sm"
                   >
                     View Product
                   </button>
@@ -153,12 +153,12 @@ export default function LatestProducts({ onAddToCart }) {
               <div className="mt-5 flex justify-between items-start px-0.5">
                 <div className="flex flex-col">
                   <h3 
-                    className="font-serif font-medium text-lg text-[#1A1A1A] leading-tight group-hover:text-[#8b6e4e] transition-colors duration-300 cursor-pointer"
+                    className="font-serif font-medium text-[15px] xs:text-base sm:text-lg text-[#1A1A1A] leading-tight group-hover:text-[#8b6e4e] transition-colors duration-300 cursor-pointer"
                     onClick={() => setSelectedProduct(product)}
                   >
                     {product.name}
                   </h3>
-                  <span className="font-serif font-light text-base text-[#1A1A1A]/70 mt-1.5">
+                  <span className="font-serif font-light text-[13px] xs:text-sm sm:text-base text-[#1A1A1A]/70 mt-1.5">
                     {product.price}
                   </span>
                 </div>
@@ -171,7 +171,7 @@ export default function LatestProducts({ onAddToCart }) {
                     e.stopPropagation()
                     setSelectedProduct(product)
                   }}
-                  className="text-[#1A1A1A]/80 hover:text-[#8b6e4e] transition-colors p-1.5 cursor-pointer"
+                  className="text-[#1A1A1A]/80 hover:text-[#8b6e4e] transition-colors p-1 cursor-pointer"
                   aria-label={`View details of ${product.name}`}
                 >
                   <ShoppingCart className="w-5 h-5 stroke-[1.5]" />
